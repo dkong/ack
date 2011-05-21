@@ -1209,6 +1209,7 @@ BEGIN {
         'autom4te.cache'    => 'autoconf',
         'cover_db'          => 'Devel::Cover',
         _build              => 'Module::Build',
+        archive             => 'Old files',
     );
 
     %mappings = (
@@ -1643,6 +1644,8 @@ sub is_searchable {
     return if $filename =~ m{^#.*#$}o;
     return if $filename =~ m{^core\.\d+$}o;
     return if $filename =~ m{[._].*\.swp$}o;
+    return if $filename =~ m{index\.html$}o;
+    return if $filename =~ m{phonegap\.htm$}o;
 
     return 1;
 }
@@ -1850,6 +1853,8 @@ File inclusion/exclusion:
     /#.+#\$/        - Emacs swap files
     /[._].*\\.swp\$/ - Vi(m) swap files
     /core\\.\\d+\$/   - core dumps
+    /index.html\$/   - index.html files
+    /phonegap.htm\$/ - phonegap.htm files
 
 Miscellaneous:
   --noenv               Ignore environment variables and ~/.ackrc
