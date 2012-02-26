@@ -42,10 +42,9 @@ if ( $ExtUtils::MakeMaker::VERSION ge '6.46' ) {
     $parms{META_MERGE} = {
         resources => {
             homepage    => 'http://betterthangrep.com/',
-            bugtracker  => 'http://github.com/petdance/ack',
+            bugtracker  => 'https://github.com/petdance/ack',
             license     => 'http://www.opensource.org/licenses/artistic-license-2.0.php',
             repository  => 'git://github.com/petdance/ack.git',
-            MailingList => 'http://groups.google.com/group/ack-users',
         }
     };
 }
@@ -72,9 +71,6 @@ BASIC_PM        = Basic.pm
 REPOSITORY_PM   = Repository.pm
 RESOURCE_PM     = Resource.pm
 ALL_PM          = $(ACK_PM) $(REPOSITORY_PM) $(RESOURCE_PM) $(BASIC_PM)
-ACK_HELP        = ack-help.txt
-ACK_HELP_TYPES  = ack-help-types.txt
-ACK_HELP_DIRS   = ack-help-dirs.txt
 PERL_T          = $(PERL) -T
 
 .PHONY: tags critic
@@ -130,15 +126,6 @@ $(ACK) : $(BASE) $(ALL_PM) squash Makefile
 	$(PERL) squash ack-base File::Next $(ALL_PM) > $(ACK)
 	$(CHMOD) 0755 $(ACK)
 	$(PERL_T) -c $(ACK)
-
-$(ACK_HELP) : $(ACK)
-	$(PERL_T) $(ACK) --noenv --help > $(ACK_HELP) || perl -e0
-
-$(ACK_HELP_TYPES) : $(ACK)
-	$(PERL_T) $(ACK) --noenv --help=types > $(ACK_HELP_TYPES) || perl -e0
-
-$(ACK_HELP_DIRS) : $(ACK)
-	$(PERL_T) $(ACK) --noenv --help=dirs > $(ACK_HELP_DIRS) || perl -e0
 
 MAKE_FRAG
 

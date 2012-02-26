@@ -111,10 +111,11 @@ File inclusion/exclusion:
     and .svn
 
   Files not checked for type:
-    /~$/           - Unix backup files
-    /#.+#$/        - Emacs swap files
+    /~$/            - Unix backup files
+    /#.+#$/         - Emacs swap files
     /[._].*\.swp$/ - Vi(m) swap files
     /core\.\d+$/   - core dumps
+    /[.-]min\.js$/  - Minified javascript files
     /index.html$/   - index.html files
     /phonegap.htm$/ - phonegap.htm files
 
@@ -127,4 +128,4 @@ Miscellaneous:
 
 Exit status is 0 if match, 1 if no match.
 
-This is version 1.94 of ack.
+This is version 1.96 of ack.
